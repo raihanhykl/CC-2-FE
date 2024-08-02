@@ -1,17 +1,9 @@
+import Testimoni from "@/components/testimoni";
 import axios from "axios";
 import { log } from "console";
 import Image from "next/image";
 
 export default async function Home() {
-  let testimoni: { name: string; image: string; id: number }[] = [];
-  for (let i = 0; i < 7; i++) {
-    const res = await axios.get("https://randomuser.me/api/");
-    const { name, id, picture } = res.data.results[0];
-    const name1: string = name.first + " " + name.last;
-    const image1: string = picture.thumbnail;
-    testimoni.push({ name: name1, image: image1, id });
-  }
-
   return (
     <>
       <div className=" w-full">
@@ -50,7 +42,7 @@ export default async function Home() {
 
         {/* services */}
         <div className=" flex flex-col gap-2 max-w-screen-lg mx-auto">
-          <div className=" flex w-full border-t-2 border-[#515151] items-center pt-2 px-2 mx-auto justify-between mt-2">
+          <div className=" autoShow flex w-full border-t-2 border-[#515151] items-center py-8 px-2 mx-auto justify-between mt-2">
             <div className=" flex flex-col pr-2 justify-center">
               <div className=" flex gap-1 items-center">
                 <div className=" font-mono text-[#515151] text-[#828282 text-[12px] sm:text-[16px] lg:text-[22px]">
@@ -77,7 +69,7 @@ export default async function Home() {
               />
             </div>
           </div>
-          <div className=" flex w-full border-t-2 border-[#515151] items-center pt-2 px-2 mx-auto justify-between mt-2">
+          <div className=" autoShow flex w-full border-t-2 border-[#515151] items-center py-8 px-2 mx-auto justify-between mt-2">
             <div className=" flex flex-col pr-2 justify-center">
               <div className=" flex gap-1 items-center">
                 <div className=" font-mono text-[#515151] text-[#828282 text-[12px] sm:text-[16px] lg:text-[22px]">
@@ -104,7 +96,7 @@ export default async function Home() {
               />
             </div>
           </div>
-          <div className=" flex w-full border-y-2 border-[#515151] items-center pt-2 px-2 mx-auto justify-between mt-2">
+          <div className=" autoShow flex w-full border-y-2 border-[#515151] items-center py-8 px-2 mx-auto justify-between mt-2">
             <div className=" flex flex-col pr-2 justify-center">
               <div className=" flex gap-1 items-center">
                 <div className=" font-mono text-[#515151] text-[#828282 text-[12px] sm:text-[16px] lg:text-[22px]">
@@ -134,24 +126,7 @@ export default async function Home() {
         </div>
 
         {/* testimonials */}
-        <div className=" flex flex-col gap-6 w-full max-w-screen-lg py-2 mx-auto mt-2">
-          <div className=" text-[12px] mx-auto w-fit">Our Satisfied Client</div>
-          <div className=" flex w-[90%] mx-auto overflow-x-auto border-x-[1px] border-[#515151]">
-            {testimoni.map((person, index) => (
-              <div
-                className=" flex flex-col gap-4 justify-center items-center min-w-[80px] h-24 bg-black border-r-[1px] border-r-[#515151]"
-                key={index}
-              >
-                <img
-                  src={person.image}
-                  alt=""
-                  className=" w-[30px] rounded-[50%]"
-                />
-                <div className=" text-[8px] ">{person.name}</div>
-              </div>
-            ))}
-          </div>
-        </div>
+        <Testimoni />
       </div>
     </>
   );
