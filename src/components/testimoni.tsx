@@ -1,20 +1,20 @@
 import React from "react";
 
 type Props = {
-  //   imageUrl: string;
-  //   name: string;
+  title: string;
+  totalPerson: number;
 };
 
-export default async function Testimoni({}: Props) {
+export default async function Testimoni({ title, totalPerson }: Props) {
   const res = await (
-    await fetch("https://randomuser.me/api/" + "?results=12")
+    await fetch(`https://randomuser.me/api/?results=${totalPerson}`)
   ).json();
   const person = res.results;
 
   return (
     <div className=" flex flex-col gap-6 w-full max-w-screen-lg py-2 mx-auto mt-2">
       <div className=" text-[12px] mx-auto w-fit sm:text-[18px] lg:text-[25px]">
-        Our Satisfied Client
+        {title}
       </div>
       <div className=" flex w-[90%] mx-auto overflow-x-auto border-x-[1px] border-[#515151]">
         {person.map((person: any, index: number) => (

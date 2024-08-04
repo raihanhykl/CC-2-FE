@@ -1,5 +1,13 @@
 import Link from "next/link";
 import React from "react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 type Props = {};
 
@@ -7,7 +15,7 @@ export default function Navbar({}: Props) {
   return (
     <>
       <div className=" shadow-sm shadow-white sticky top-0 z-50 bg-black">
-        <div className=" flex justify-between items-center sticky top-0 z-50 py-4 px-4 lg:px-8  max-w-screen-lg mx-auto">
+        <div className=" flex justify-between items-center sticky top-0 z-50 py-4 px-4 lg:px-8  max-w-screen-xl mx-auto">
           {/* navleft */}
           <div>
             <Link href={"/"}>
@@ -45,7 +53,24 @@ export default function Navbar({}: Props) {
                 </Link>
               </div>
             </div>
-            <img src="burger.svg" alt="" className=" w-7 sm:hidden mx-0" />
+            <div className=" w-7 sm:hidden mx-0">
+              <DropdownMenu>
+                <DropdownMenuTrigger>
+                  <img src="burger.svg" alt="" />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="bg-black text-white">
+                  <DropdownMenuItem>
+                    <Link href={"/service-page"}>Services</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <Link href={"/teams"}>Teams</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <Link href={"/about"}>About Us</Link>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
           </div>
         </div>
       </div>

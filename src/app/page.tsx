@@ -6,9 +6,9 @@ import Image from "next/image";
 export default async function Home() {
   return (
     <>
-      <div className=" w-full">
+      <div className="">
         {/* hero */}
-        <div className=" w-[100%] max-w-screen-2xl my-1 relative mx-auto h-fit">
+        <div className=" w-[100%]  my-1 relative mx-auto">
           <video
             autoPlay
             loop
@@ -126,7 +126,7 @@ export default async function Home() {
         </div>
 
         {/* testimonials */}
-        <Testimoni />
+        <Testimoni title={"Our Satisfied Client"} totalPerson={12} />
       </div>
     </>
   );
